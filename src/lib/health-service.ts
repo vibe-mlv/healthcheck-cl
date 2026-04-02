@@ -19,6 +19,8 @@ const APIFY_MAPS_ACTOR_ID = process.env.APIFY_MAPS_ACTOR_ID;
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const GEMINI_MODEL = process.env.GEMINI_MODEL ?? "gemini-2.5-flash";
 const COMPETITOR_RANK_PREFERENCE = "POPULARITY";
+const APIFY_TIMEOUT_MS = 30000;
+const GEMINI_TIMEOUT_MS = 20000;
 const VIETNAM_LOCATION_RESTRICTION = {
   rectangle: {
     low: {
@@ -268,6 +270,32 @@ function prettifyCategory(value: string) {
     .replace(/\b\w/g, (character) => character.toUpperCase());
 }
 
+async function fetchWithTimeout(
+  url: string,
+  init: RequestInit,
+  timeoutMs: number,
+  label: string,
+) {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+  const startedAt = Date.now();
+
+  try {
+    const response = await fetch(url, {
+      ...init,
+      signal: controller.signal,
+    });
+    console.info(`[health-service] ${label} completed in ${Date.now() - startedAt}ms with status ${response.status}`);
+    return response;
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "Unknown error";
+    console.warn(`[health-service] ${label} failed after ${Date.now() - startedAt}ms: ${message}`);
+    throw error;
+  } finally {
+    clearTimeout(timeoutId);
+  }
+}
+
 async function getPlaceDetails(placeId: string) {
   const response = await fetch(`https://places.googleapis.com/v1/places/${placeId}`, {
     headers: {
@@ -295,12 +323,17 @@ function getPhotoUrl(photoName?: string) {
 async function runApifyActor(actorId: string, input: Record<string, unknown>) {
   const normalizedActorId = encodeURIComponent(actorId);
   const url = `https://api.apify.com/v2/acts/${normalizedActorId}/run-sync-get-dataset-items?token=${APIFY_API_TOKEN}`;
-  const response = await fetch(url, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(input),
-    cache: "no-store",
-  });
+  const response = await fetchWithTimeout(
+    url,
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(input),
+      cache: "no-store",
+    },
+    APIFY_TIMEOUT_MS,
+    `Apify actor ${actorId}`,
+  );
 
   if (!response.ok) {
     throw new Error(`Apify actor ${actorId} failed.`);
@@ -333,7 +366,7 @@ Reviews:
 ${reviews.map((review, index) => `${index + 1}. ${review}`).join("\n")}
 `;
 
-  const response = await fetch(
+  const response = await fetchWithTimeout(
     `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`,
     {
       method: "POST",
@@ -346,6 +379,8 @@ ${reviews.map((review, index) => `${index + 1}. ${review}`).join("\n")}
       }),
       cache: "no-store",
     },
+    GEMINI_TIMEOUT_MS,
+    `Gemini classifyThemes (${reviews.length} reviews)`,
   );
 
   if (!response.ok) {
