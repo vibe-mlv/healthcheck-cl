@@ -19,6 +19,18 @@ const APIFY_MAPS_ACTOR_ID = process.env.APIFY_MAPS_ACTOR_ID;
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const GEMINI_MODEL = process.env.GEMINI_MODEL ?? "gemini-2.5-flash";
 const COMPETITOR_RANK_PREFERENCE = "POPULARITY";
+const VIETNAM_LOCATION_RESTRICTION = {
+  rectangle: {
+    low: {
+      latitude: 8.18,
+      longitude: 102.14,
+    },
+    high: {
+      latitude: 23.4,
+      longitude: 109.47,
+    },
+  },
+};
 
 type GoogleAutocompletePrediction = {
   placeId: string;
@@ -196,6 +208,7 @@ export async function searchLocations(query: string): Promise<{ results: SearchR
     body: JSON.stringify({
       input: query,
       includedRegionCodes: ["vn"],
+      locationRestriction: VIETNAM_LOCATION_RESTRICTION,
     }),
     cache: "no-store",
   });
