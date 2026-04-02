@@ -1372,6 +1372,20 @@ button {
     align-items: start;
   }
 
+  .breakdownCardTop {
+    align-items: center;
+  }
+
+  .summaryScore {
+    justify-items: start;
+    align-items: center;
+  }
+
+  .actionCard {
+    padding: 16px;
+    gap: 12px;
+  }
+
   .heroCarouselImage {
     aspect-ratio: 4 / 3;
     min-height: 200px;
