@@ -1372,6 +1372,17 @@ button {
     align-items: start;
   }
 
+  .heroCarouselImage {
+    aspect-ratio: 4 / 3;
+    min-height: 200px;
+    max-height: 280px;
+  }
+
+  .heroCarouselFrame {
+    min-height: 200px;
+    padding: 12px;
+  }
+
   .competitorActions,
   .actionCard a,
   .errorState button {
