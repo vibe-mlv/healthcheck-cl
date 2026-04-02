@@ -597,6 +597,7 @@ export function HealthDemoApp() {
                   width={1200}
                   height={900}
                   sizes="(max-width: 980px) 92vw, 58vw"
+                  unoptimized
                 />
                 {images.length > 1 ? (
                   <>
@@ -718,6 +719,7 @@ export function HealthDemoApp() {
                         width={1200}
                         height={900}
                         sizes="(max-width: 980px) 92vw, 32vw"
+                        unoptimized
                       />
                     </div>
                     {reportImages.length > 1 ? (
@@ -899,6 +901,7 @@ export function HealthDemoApp() {
                                     width={44}
                                     height={44}
                                     className="reviewAvatar"
+                                    unoptimized
                                   />
                                 ) : (
                                   <div className="reviewAvatar fallback">{reviewerInitials(review.author)}</div>
@@ -967,6 +970,7 @@ export function HealthDemoApp() {
                           width={1200}
                           height={900}
                           sizes="(max-width: 720px) 90vw, (max-width: 980px) 46vw, 22vw"
+                          unoptimized
                         />
                       ) : (
                         <div className="competitorImageFallback">{competitor.rank}</div>
