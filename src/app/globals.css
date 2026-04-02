@@ -1377,8 +1377,15 @@ button {
   }
 
   .summaryScore {
-    justify-items: start;
+    display: flex;
+    flex-direction: row;
     align-items: center;
+    gap: 8px;
+    justify-items: unset;
+  }
+
+  .summaryStatusIcon {
+    margin-top: 0;
   }
 
   .actionCard {
