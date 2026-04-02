@@ -1362,15 +1362,6 @@ button {
     height: 190px;
   }
 
-  .scoreGaugeLabel strong {
-    font-size: 2.2rem;
-  }
-
-  .scoreGaugeLabel span {
-    font-size: 0.75rem;
-    margin-top: 4px;
-  }
-
   .competitorCard,
   .actionCard,
   .errorState,
