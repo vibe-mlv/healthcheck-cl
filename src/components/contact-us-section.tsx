@@ -200,34 +200,34 @@ const ContactUsSection: React.FC = () => {
                 <h3 className='text-xl md:text-2xl font-bold text-gray-800 mb-6'>Let&apos;s Connect</h3>
 
                 <div className='space-y-5'>
-                  <div className='flex items-start gap-4'>
-                    <div className='w-12 h-12 flex-shrink-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center'>
-                      <Mail className='w-6 h-6 text-white' />
+                  <div className='flex items-center gap-3'>
+                    <div className='w-9 h-9 flex-shrink-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center'>
+                      <Mail className='w-5 h-5 text-white' />
                     </div>
                     <div>
-                      <h4 className='font-semibold text-gray-800'>Email Us</h4>
-                      <p className='text-gray-600 text-sm'>inquiry@maplovin.com</p>
-                      <p className='text-xs text-gray-500 mt-1'>We&apos;ll respond within 24 hours</p>
+                      <h4 className='font-semibold text-gray-800 text-sm'>Email Us</h4>
+                      <p className='text-gray-600 text-xs'>inquiry@maplovin.com</p>
+                      <p className='text-xs text-gray-500 mt-0.5'>We&apos;ll respond within 24 hours</p>
                     </div>
                   </div>
 
-                  <div className='flex items-start gap-4'>
-                    <div className='w-12 h-12 flex-shrink-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center'>
-                      <Phone className='w-6 h-6 text-white' />
+                  <div className='flex items-center gap-3'>
+                    <div className='w-9 h-9 flex-shrink-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center'>
+                      <Phone className='w-5 h-5 text-white' />
                     </div>
                     <div>
-                      <h4 className='font-semibold text-gray-800'>Call Us</h4>
-                      <p className='text-gray-600 text-sm'>+84 33 606 1307</p>
+                      <h4 className='font-semibold text-gray-800 text-sm'>Call Us</h4>
+                      <p className='text-gray-600 text-xs'>+84 33 606 1307</p>
                     </div>
                   </div>
 
-                  <div className='flex items-start gap-4'>
-                    <div className='w-12 h-12 flex-shrink-0 bg-gradient-to-r from-pink-500 to-red-500 rounded-lg flex items-center justify-center'>
-                      <MapPin className='w-6 h-6 text-white' />
+                  <div className='flex items-center gap-3'>
+                    <div className='w-9 h-9 flex-shrink-0 bg-gradient-to-r from-pink-500 to-red-500 rounded-lg flex items-center justify-center'>
+                      <MapPin className='w-5 h-5 text-white' />
                     </div>
                     <div>
-                      <h4 className='font-semibold text-gray-800'>Address</h4>
-                      <p className='text-gray-600 text-sm'>
+                      <h4 className='font-semibold text-gray-800 text-sm'>Address</h4>
+                      <p className='text-gray-600 text-xs'>
                         82 Pho Duc Chinh Ward 1, Binh Thanh District Ho Chi Minh City, Vietnam
                       </p>
                     </div>
