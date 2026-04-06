@@ -38,6 +38,7 @@ import {
 } from "recharts";
 
 import type { CategoryBreakdown, HealthReport, SearchResult, ThemeInsight } from "@/lib/types";
+import ContactUsSection from "./contact-us-section";
 
 const statusMessages = [
   "Finding your business on Google Maps...",
@@ -1111,6 +1112,7 @@ export function HealthDemoApp() {
               ))}
             </div>
           </section>
+          <ContactUsSection />
         </div>
       )}
     </main>

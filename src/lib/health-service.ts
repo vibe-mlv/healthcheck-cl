@@ -20,7 +20,7 @@ const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const GEMINI_MODEL = process.env.GEMINI_MODEL ?? "gemini-2.5-flash";
 const COMPETITOR_RANK_PREFERENCE = "POPULARITY";
 const APIFY_TIMEOUT_MS = 30000;
-const GEMINI_TIMEOUT_MS = 20000;
+const GEMINI_TIMEOUT_MS = 50000;
 const VIETNAM_LOCATION_RESTRICTION = {
   rectangle: {
     low: {
@@ -489,11 +489,11 @@ Rules:
 
 Criteria:
 ${criteria
-  .map(
-    (criterion) =>
-      `- id: ${criterion.id}; category: ${criterion.categoryTitle}; value: ${criterion.value}; score: ${criterion.score}/${criterion.maxScore}; tip: ${criterion.tip}`,
-  )
-  .join("\n")}
+      .map(
+        (criterion) =>
+          `- id: ${criterion.id}; category: ${criterion.categoryTitle}; value: ${criterion.value}; score: ${criterion.score}/${criterion.maxScore}; tip: ${criterion.tip}`,
+      )
+      .join("\n")}
 `;
 
   const response = await fetch(
@@ -776,10 +776,10 @@ function adaptLiveProfile(
         (post): PostSnippet | null =>
           (post.text ?? post.content)
             ? {
-                content: post.text ?? post.content ?? "",
-                publishedAt: post.date ?? post.publishedAt,
-                url: post.url ?? post.postUrl ?? "https://business.google.com",
-              }
+              content: post.text ?? post.content ?? "",
+              publishedAt: post.date ?? post.publishedAt,
+              url: post.url ?? post.postUrl ?? "https://business.google.com",
+            }
             : null,
       )
       .filter(isDefined)
@@ -793,22 +793,22 @@ function adaptLiveProfile(
       competitors.length > 0
         ? competitors
         : [
-            {
-              placeId,
-              name: placeDetails.displayName?.text ?? "Business",
-              address: placeDetails.formattedAddress ?? "Google Maps listing",
-              rating: placeDetails.rating ?? 0,
-              reviewCount: placeDetails.userRatingCount ?? reviews.length,
-              rank: 1,
-              latitude: placeDetails.location?.latitude ?? 0,
-              longitude: placeDetails.location?.longitude ?? 0,
-              mapUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(placeDetails.displayName?.text ?? "Business")}&query_place_id=${placeId}`,
-              category: category ?? "Business",
-              imageUrl: images[0],
-              images,
-              isCurrent: true,
-            },
-          ],
+          {
+            placeId,
+            name: placeDetails.displayName?.text ?? "Business",
+            address: placeDetails.formattedAddress ?? "Google Maps listing",
+            rating: placeDetails.rating ?? 0,
+            reviewCount: placeDetails.userRatingCount ?? reviews.length,
+            rank: 1,
+            latitude: placeDetails.location?.latitude ?? 0,
+            longitude: placeDetails.location?.longitude ?? 0,
+            mapUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(placeDetails.displayName?.text ?? "Business")}&query_place_id=${placeId}`,
+            category: category ?? "Business",
+            imageUrl: images[0],
+            images,
+            isCurrent: true,
+          },
+        ],
   };
 }
 
@@ -839,22 +839,22 @@ export async function getHealthReport(placeId: string, category?: string): Promi
     const [reviewItems, mapsData, competitors] = await Promise.all([
       APIFY_API_TOKEN && APIFY_REVIEWS_ACTOR_ID
         ? runApifyActor(APIFY_REVIEWS_ACTOR_ID, {
-            placeIds: [placeId],
-            maxReviews: 100,
-            reviewsSort: "newest",
-            reviewsOrigin: "google",
-            personalData: true,
-          }).catch(() => [])
+          placeIds: [placeId],
+          maxReviews: 100,
+          reviewsSort: "newest",
+          reviewsOrigin: "google",
+          personalData: true,
+        }).catch(() => [])
         : Promise.resolve([]),
       APIFY_API_TOKEN && APIFY_MAPS_ACTOR_ID
         ? runApifyActor(APIFY_MAPS_ACTOR_ID, {
-            placeIds: [placeId],
-            maxCrawledPlacesPerSearch: 1,
-            scrapePlaceDetailPage: true,
-            maxReviews: 25,
-            maxImages: 10,
-            scrapeReviewsPersonalData: true,
-          }).catch(() => [])
+          placeIds: [placeId],
+          maxCrawledPlacesPerSearch: 1,
+          scrapePlaceDetailPage: true,
+          maxReviews: 25,
+          maxImages: 10,
+          scrapeReviewsPersonalData: true,
+        }).catch(() => [])
         : Promise.resolve([]),
       getNearbyCompetitors(
         latitude,
