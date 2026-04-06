@@ -764,7 +764,7 @@ function adaptLiveProfile(
     website: placeDetails.websiteUri ?? entry.website,
     menuUrl: entry.menu,
     description: entry.description,
-    postsLast90Days: postAges.filter((days: number) => days <= 365).length,
+    postsLast90Days: postAges.filter((days: number) => days <= 720).length,
     lastPostDays: postAges.length ? Math.min(...postAges) : 999,
     rankWithin1km: competitorIndex >= 0 ? competitorIndex + 1 : null,
     latitude: placeDetails.location?.latitude ?? 0,
