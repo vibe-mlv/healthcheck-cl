@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import Link from 'next/link'
-import { Mail, Phone, MapPin, Linkedin, Facebook } from 'lucide-react'
+import { Mail, Phone, MapPin } from 'lucide-react'
 import '../styles/contact-section.css'
 
 interface ContactFormData {
@@ -309,7 +309,9 @@ const ContactUsSection: React.FC = () => {
                         aria-label='Facebook'
                         className='w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center text-white hover:bg-blue-700 transform hover:scale-110 transition-all duration-300'
                       >
-                        <Facebook className='w-5 h-5' />
+                        <svg className='w-5 h-5' fill='currentColor' viewBox='0 0 24 24'>
+                          <path d='M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z'/>
+                        </svg>
                       </Link>
                       <Link
                         href='https://www.linkedin.com/company/maplovin'
@@ -318,7 +320,9 @@ const ContactUsSection: React.FC = () => {
                         aria-label='LinkedIn'
                         className='w-10 h-10 bg-blue-800 rounded-lg flex items-center justify-center text-white hover:bg-blue-900 transform hover:scale-110 transition-all duration-300'
                       >
-                        <Linkedin className='w-5 h-5' />
+                        <svg className='w-5 h-5' fill='currentColor' viewBox='0 0 24 24'>
+                          <path d='M20.447 20.452h-3.554v-5.569c0-1.328-.475-2.236-1.986-2.236-1.081 0-1.722.722-2.004 1.418-.103.249-.129.597-.129.946v5.441h-3.554s.05-8.811 0-9.728h3.554v1.375c.428-.659 1.191-1.595 2.897-1.595 2.117 0 3.704 1.385 3.704 4.363v5.585zM5.337 8.855c-1.144 0-1.915-.762-1.915-1.715 0-.956.77-1.715 1.946-1.715 1.177 0 1.915.759 1.915 1.715 0 .953-.738 1.715-1.946 1.715zm1.595 11.597H3.762V9.579h3.17v10.873zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z'/>
+                        </svg>
                       </Link>
                     </div>
                   </div>
