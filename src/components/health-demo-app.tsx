@@ -1112,9 +1112,9 @@ export function HealthDemoApp() {
               ))}
             </div>
           </section>
+          <ContactUsSection />
         </div>
       )}
-      <ContactUsSection />
     </main>
   );
 }
