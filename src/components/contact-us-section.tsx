@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { Mail, Phone, MapPin } from '@phosphor-icons/react'
 import Link from 'next/link'
-import { Mail, Phone, MapPin } from 'lucide-react'
 
 interface ContactFormData {
   name: string
@@ -59,198 +59,306 @@ const ContactUsSection: React.FC = () => {
   }
 
   return (
-    <section className='w-full py-16 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50'>
-      <div className='w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8'>
-        {/* Header */}
-        <div className='mb-12 text-center'>
-          <h2 className='text-4xl font-bold mb-2'>
-            <span className='bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent'>
-              Get in Touch
-            </span>
+    <section className="pageShell">
+      {/* Section Header */}
+      <div className="sectionHeader" style={{ marginBottom: '48px' }}>
+        <h3>Get in Touch</h3>
+        <p style={{ color: 'var(--ml-gray-base)', marginTop: '12px', maxWidth: '70ch', lineHeight: 1.6 }}>
+          Ready to boost your local presence? Let&apos;s discuss how we can help your business grow.
+        </p>
+      </div>
+
+      {/* Two Column Layout */}
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '48px', alignItems: 'start' }}>
+        {/* Contact Form */}
+        <div className="sectionCard">
+          <h2 style={{ fontSize: '1.4rem', color: 'var(--ml-navy-dark)', marginBottom: '24px', fontFamily: 'var(--font-crimson), serif', fontWeight: 600 }}>
+            Send us a Message
           </h2>
-          <p className='text-gray-600 text-lg'>
-            Ready to boost your local presence? Let&apos;s discuss how we can help your business grow.
-          </p>
+
+          <form onSubmit={handleSubmit(onSubmit)} style={{ display: 'grid', gap: '20px' }}>
+            {/* Name Field */}
+            <div>
+              <label style={{ display: 'block', marginBottom: '8px', color: 'var(--ml-navy-dark)', fontWeight: 700, fontSize: '0.95rem' }}>
+                Name
+              </label>
+              <input
+                {...register('name', { required: 'Name is required' })}
+                type="text"
+                placeholder="Your full name"
+                style={{
+                  width: '100%',
+                  padding: '12px 16px',
+                  border: `1px solid ${errors.name ? 'var(--ml-error)' : 'rgba(30, 59, 122, 0.12)'}`,
+                  borderRadius: '14px',
+                  background: errors.name ? 'rgba(220, 38, 38, 0.08)' : 'var(--ml-gray-light)',
+                  fontSize: '0.95rem',
+                  color: 'var(--ml-gray-dark)',
+                  fontFamily: 'inherit',
+                  outline: 'none',
+                  transition: 'border-color 160ms ease',
+                } as React.CSSProperties}
+              />
+              {errors.name && <p style={{ marginTop: '6px', color: 'var(--ml-error)', fontSize: '0.85rem' }}>{errors.name.message}</p>}
+            </div>
+
+            {/* Phone Field */}
+            <div>
+              <label style={{ display: 'block', marginBottom: '8px', color: 'var(--ml-navy-dark)', fontWeight: 700, fontSize: '0.95rem' }}>
+                Phone
+              </label>
+              <input
+                {...register('phone', { required: 'Phone number is required' })}
+                type="tel"
+                placeholder="Your phone number"
+                style={{
+                  width: '100%',
+                  padding: '12px 16px',
+                  border: `1px solid ${errors.phone ? 'var(--ml-error)' : 'rgba(30, 59, 122, 0.12)'}`,
+                  borderRadius: '14px',
+                  background: errors.phone ? 'rgba(220, 38, 38, 0.08)' : 'var(--ml-gray-light)',
+                  fontSize: '0.95rem',
+                  color: 'var(--ml-gray-dark)',
+                  fontFamily: 'inherit',
+                  outline: 'none',
+                  transition: 'border-color 160ms ease',
+                } as React.CSSProperties}
+              />
+              {errors.phone && <p style={{ marginTop: '6px', color: 'var(--ml-error)', fontSize: '0.85rem' }}>{errors.phone.message}</p>}
+            </div>
+
+            {/* Email Field */}
+            <div>
+              <label style={{ display: 'block', marginBottom: '8px', color: 'var(--ml-navy-dark)', fontWeight: 700, fontSize: '0.95rem' }}>
+                Email *
+              </label>
+              <input
+                {...register('email', {
+                  required: 'Email is required',
+                  pattern: {
+                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                    message: 'Invalid email address',
+                  },
+                })}
+                type="email"
+                placeholder="your.email@example.com"
+                style={{
+                  width: '100%',
+                  padding: '12px 16px',
+                  border: `1px solid ${errors.email ? 'var(--ml-error)' : 'rgba(30, 59, 122, 0.12)'}`,
+                  borderRadius: '14px',
+                  background: errors.email ? 'rgba(220, 38, 38, 0.08)' : 'var(--ml-gray-light)',
+                  fontSize: '0.95rem',
+                  color: 'var(--ml-gray-dark)',
+                  fontFamily: 'inherit',
+                  outline: 'none',
+                  transition: 'border-color 160ms ease',
+                } as React.CSSProperties}
+              />
+              {errors.email && <p style={{ marginTop: '6px', color: 'var(--ml-error)', fontSize: '0.85rem' }}>{errors.email.message}</p>}
+            </div>
+
+            {/* Message Field */}
+            <div>
+              <label style={{ display: 'block', marginBottom: '8px', color: 'var(--ml-navy-dark)', fontWeight: 700, fontSize: '0.95rem' }}>
+                Message *
+              </label>
+              <textarea
+                {...register('message', {
+                  required: 'Message is required',
+                  minLength: {
+                    value: 10,
+                    message: 'Message must be at least 10 characters long',
+                  },
+                  maxLength: {
+                    value: 1000,
+                    message: 'Message must not exceed 1000 characters',
+                  },
+                })}
+                placeholder="Tell us about your business and how we can help..."
+                rows={4}
+                style={{
+                  width: '100%',
+                  padding: '12px 16px',
+                  border: `1px solid ${errors.message ? 'var(--ml-error)' : 'rgba(30, 59, 122, 0.12)'}`,
+                  borderRadius: '14px',
+                  background: errors.message ? 'rgba(220, 38, 38, 0.08)' : 'var(--ml-gray-light)',
+                  fontSize: '0.95rem',
+                  color: 'var(--ml-gray-dark)',
+                  fontFamily: 'inherit',
+                  outline: 'none',
+                  transition: 'border-color 160ms ease',
+                  resize: 'none',
+                } as React.CSSProperties}
+              />
+              {errors.message && <p style={{ marginTop: '6px', color: 'var(--ml-error)', fontSize: '0.85rem' }}>{errors.message.message}</p>}
+            </div>
+
+            {/* Submit Button */}
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="primaryButton"
+              style={{
+                width: '100%',
+                marginTop: '8px',
+                opacity: isSubmitting ? 0.6 : 1,
+              }}
+            >
+              {isSubmitting ? 'Sending...' : 'Send Message'}
+            </button>
+
+            {/* Submit Message */}
+            {submitMessage && (
+              <div
+                style={{
+                  padding: '12px 16px',
+                  borderRadius: '12px',
+                  fontSize: '0.9rem',
+                  textAlign: 'center',
+                  background: submitMessage.includes('Thank you') ? 'rgba(5, 150, 105, 0.1)' : 'rgba(220, 38, 38, 0.1)',
+                  color: submitMessage.includes('Thank you') ? 'var(--ml-success)' : 'var(--ml-error)',
+                  border: `1px solid ${submitMessage.includes('Thank you') ? 'var(--ml-success)' : 'var(--ml-error)'}`,
+                } as React.CSSProperties}
+              >
+                {submitMessage}
+              </div>
+            )}
+          </form>
         </div>
 
-        {/* Two Column Layout */}
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
-          {/* Form Column */}
-          <div className='bg-white rounded-2xl p-6 md:p-8 shadow-lg'>
-            <h3 className='text-2xl font-bold text-gray-800 mb-6'>Send us a Message</h3>
+        {/* Contact Information */}
+        <div className="sectionCard">
+          <h2 style={{ fontSize: '1.4rem', color: 'var(--ml-navy-dark)', marginBottom: '24px', fontFamily: 'var(--font-crimson), serif', fontWeight: 600 }}>
+            Let&apos;s Connect
+          </h2>
 
-            <form onSubmit={handleSubmit(onSubmit)} className='space-y-5'>
-              {/* Name */}
-              <div>
-                <label htmlFor='name' className='block text-sm font-medium text-gray-700 mb-2'>
-                  Name
-                </label>
-                <input
-                  {...register('name', { required: 'Name is required' })}
-                  type='text'
-                  id='name'
-                  className={`w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                    errors.name ? 'border-red-500' : 'border-gray-300'
-                  }`}
-                  placeholder='Your full name'
-                />
-                {errors.name && <p className='text-red-600 text-xs mt-1'>{errors.name.message}</p>}
-              </div>
-
-              {/* Phone */}
-              <div>
-                <label htmlFor='phone' className='block text-sm font-medium text-gray-700 mb-2'>
-                  Phone
-                </label>
-                <input
-                  {...register('phone', { required: 'Phone number is required' })}
-                  type='tel'
-                  id='phone'
-                  className={`w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                    errors.phone ? 'border-red-500' : 'border-gray-300'
-                  }`}
-                  placeholder='Your phone number'
-                />
-                {errors.phone && <p className='text-red-600 text-xs mt-1'>{errors.phone.message}</p>}
-              </div>
-
-              {/* Email */}
-              <div>
-                <label htmlFor='email' className='block text-sm font-medium text-gray-700 mb-2'>
-                  Email *
-                </label>
-                <input
-                  {...register('email', {
-                    required: 'Email is required',
-                    pattern: {
-                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                      message: 'Invalid email address',
-                    },
-                  })}
-                  type='email'
-                  id='email'
-                  className={`w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                    errors.email ? 'border-red-500' : 'border-gray-300'
-                  }`}
-                  placeholder='your.email@example.com'
-                />
-                {errors.email && <p className='text-red-600 text-xs mt-1'>{errors.email.message}</p>}
-              </div>
-
-              {/* Message */}
-              <div>
-                <label htmlFor='message' className='block text-sm font-medium text-gray-700 mb-2'>
-                  Message *
-                </label>
-                <textarea
-                  {...register('message', {
-                    required: 'Message is required',
-                    minLength: {
-                      value: 10,
-                      message: 'Message must be at least 10 characters long',
-                    },
-                  })}
-                  id='message'
-                  rows={4}
-                  className={`w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none ${
-                    errors.message ? 'border-red-500' : 'border-gray-300'
-                  }`}
-                  placeholder='Tell us about your business and how we can help...'
-                />
-                {errors.message && <p className='text-red-600 text-xs mt-1'>{errors.message.message}</p>}
-              </div>
-
-              {/* Submit Button */}
-              <button
-                type='submit'
-                disabled={isSubmitting}
-                className='w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition disabled:opacity-50'
+          {/* Contact Info Items */}
+          <div style={{ display: 'grid', gap: '24px', marginBottom: '24px' }}>
+            {/* Email */}
+            <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: '44px',
+                  height: '44px',
+                  minWidth: '44px',
+                  borderRadius: '12px',
+                  background: 'rgba(80, 120, 184, 0.14)',
+                } as React.CSSProperties}
               >
-                {isSubmitting ? 'Sending...' : 'Send Message'}
-              </button>
-
-              {submitMessage && (
-                <div
-                  className={`p-3 rounded-lg text-sm text-center ${
-                    submitMessage.includes('Thank you')
-                      ? 'bg-green-100 text-green-800'
-                      : 'bg-red-100 text-red-800'
-                  }`}
-                >
-                  {submitMessage}
-                </div>
-              )}
-            </form>
-          </div>
-
-          {/* Info Column */}
-          <div className='bg-white rounded-2xl p-8 shadow-lg'>
-            <h3 className='text-2xl font-bold text-gray-800 mb-6'>Let&apos;s Connect</h3>
-
-            <div className='space-y-6'>
-              {/* Email */}
-              <div className='flex gap-4'>
-                <div className='flex-shrink-0 w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center'>
-                  <Mail className='w-5 h-5 text-white' />
-                </div>
-                <div>
-                  <h4 className='font-semibold text-gray-800'>Email Us</h4>
-                  <p className='text-gray-600 text-sm'>inquiry@maplovin.com</p>
-                  <p className='text-gray-500 text-xs'>We&apos;ll respond within 24 hours</p>
-                </div>
+                <Mail size={20} color="var(--ml-navy-base)" weight="fill" />
               </div>
-
-              {/* Phone */}
-              <div className='flex gap-4'>
-                <div className='flex-shrink-0 w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center'>
-                  <Phone className='w-5 h-5 text-white' />
-                </div>
-                <div>
-                  <h4 className='font-semibold text-gray-800'>Call Us</h4>
-                  <p className='text-gray-600 text-sm'>+84 33 606 1307</p>
-                </div>
-              </div>
-
-              {/* Address */}
-              <div className='flex gap-4'>
-                <div className='flex-shrink-0 w-10 h-10 bg-gradient-to-r from-pink-500 to-red-500 rounded-lg flex items-center justify-center'>
-                  <MapPin className='w-5 h-5 text-white' />
-                </div>
-                <div>
-                  <h4 className='font-semibold text-gray-800'>Address</h4>
-                  <p className='text-gray-600 text-sm'>
-                    82 Pho Duc Chinh Ward 1, Binh Thanh District Ho Chi Minh City, Vietnam
-                  </p>
-                </div>
+              <div>
+                <strong style={{ display: 'block', color: 'var(--ml-navy-dark)', marginBottom: '4px', fontSize: '0.95rem' }}>
+                  Email Us
+                </strong>
+                <p style={{ color: 'var(--ml-gray-base)', fontSize: '0.9rem' }}>inquiry@maplovin.com</p>
+                <small style={{ color: 'var(--ml-gray-base)', display: 'block', marginTop: '4px', fontSize: '0.85rem' }}>
+                  We&apos;ll respond within 24 hours
+                </small>
               </div>
             </div>
 
-            <div className='mt-8 pt-6 border-t border-gray-200'>
-              <h4 className='font-semibold text-gray-800 mb-4'>Follow Us</h4>
-              <div className='flex gap-3'>
-                <Link
-                  href='https://www.facebook.com/maplovin'
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  aria-label='Facebook'
-                  className='w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center text-white hover:bg-blue-700'
-                >
-                  <svg className='w-5 h-5' fill='currentColor' viewBox='0 0 24 24'>
-                    <path d='M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z' />
-                  </svg>
-                </Link>
-                <Link
-                  href='https://www.linkedin.com/company/maplovin'
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  aria-label='LinkedIn'
-                  className='w-10 h-10 bg-blue-800 rounded-lg flex items-center justify-center text-white hover:bg-blue-900'
-                >
-                  <svg className='w-5 h-5' fill='currentColor' viewBox='0 0 24 24'>
-                    <path d='M20.447 20.452h-3.554v-5.569c0-1.328-.475-2.236-1.986-2.236-1.081 0-1.722.722-2.004 1.418-.103.249-.129.597-.129.946v5.441h-3.554s.05-8.811 0-9.728h3.554v1.375c.428-.659 1.191-1.595 2.897-1.595 2.117 0 3.704 1.385 3.704 4.363v5.585zM5.337 8.855c-1.144 0-1.915-.762-1.915-1.715 0-.956.77-1.715 1.946-1.715 1.177 0 1.915.759 1.915 1.715 0 .953-.738 1.715-1.946 1.715zm1.595 11.597H3.762V9.579h3.17v10.873zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z' />
-                  </svg>
-                </Link>
+            {/* Phone */}
+            <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: '44px',
+                  height: '44px',
+                  minWidth: '44px',
+                  borderRadius: '12px',
+                  background: 'rgba(80, 120, 184, 0.14)',
+                } as React.CSSProperties}
+              >
+                <Phone size={20} color="var(--ml-navy-base)" weight="fill" />
               </div>
+              <div>
+                <strong style={{ display: 'block', color: 'var(--ml-navy-dark)', marginBottom: '4px', fontSize: '0.95rem' }}>
+                  Call Us
+                </strong>
+                <p style={{ color: 'var(--ml-gray-base)', fontSize: '0.9rem' }}>+84 33 606 1307</p>
+              </div>
+            </div>
+
+            {/* Address */}
+            <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: '44px',
+                  height: '44px',
+                  minWidth: '44px',
+                  borderRadius: '12px',
+                  background: 'rgba(80, 120, 184, 0.14)',
+                } as React.CSSProperties}
+              >
+                <MapPin size={20} color="var(--ml-navy-base)" weight="fill" />
+              </div>
+              <div>
+                <strong style={{ display: 'block', color: 'var(--ml-navy-dark)', marginBottom: '4px', fontSize: '0.95rem' }}>
+                  Address
+                </strong>
+                <p style={{ color: 'var(--ml-gray-base)', fontSize: '0.9rem', lineHeight: 1.5 }}>
+                  82 Pho Duc Chinh Ward 1, Binh Thanh District Ho Chi Minh City, Vietnam
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Divider */}
+          <div style={{ borderTop: '1px solid rgba(30, 59, 122, 0.1)', paddingTop: '24px' }}>
+            <strong style={{ display: 'block', color: 'var(--ml-navy-dark)', marginBottom: '16px', fontSize: '0.95rem' }}>
+              Follow Us
+            </strong>
+            <div style={{ display: 'flex', gap: '12px' }}>
+              <Link
+                href="https://www.facebook.com/maplovin"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: '40px',
+                  height: '40px',
+                  borderRadius: '10px',
+                  background: 'rgba(80, 120, 184, 0.14)',
+                  color: 'var(--ml-navy-base)',
+                  transition: 'background-color 160ms ease',
+                } as React.CSSProperties}
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                </svg>
+              </Link>
+              <Link
+                href="https://www.linkedin.com/company/maplovin"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: '40px',
+                  height: '40px',
+                  borderRadius: '10px',
+                  background: 'rgba(80, 120, 184, 0.14)',
+                  color: 'var(--ml-navy-base)',
+                  transition: 'background-color 160ms ease',
+                } as React.CSSProperties}
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.475-2.236-1.986-2.236-1.081 0-1.722.722-2.004 1.418-.103.249-.129.597-.129.946v5.441h-3.554s.05-8.811 0-9.728h3.554v1.375c.428-.659 1.191-1.595 2.897-1.595 2.117 0 3.704 1.385 3.704 4.363v5.585zM5.337 8.855c-1.144 0-1.915-.762-1.915-1.715 0-.956.77-1.715 1.946-1.715 1.177 0 1.915.759 1.915 1.715 0 .953-.738 1.715-1.946 1.715zm1.595 11.597H3.762V9.579h3.17v10.873zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z" />
+                </svg>
+              </Link>
             </div>
           </div>
         </div>
