@@ -183,6 +183,28 @@ function hasLiveHealthConfig() {
   return Boolean(GOOGLE_API_KEY);
 }
 
+function convertRelativeDateToISO(relativeDate: string | undefined): string {
+  if (!relativeDate) return new Date().toISOString();
+  
+  const match = relativeDate.match(/(\d+)\s+(year|month|week|day|hour|minute)s?\s+ago/i);
+  if (!match) return new Date().toISOString();
+  
+  const [, amount, unit] = match;
+  const num = parseInt(amount, 10);
+  const date = new Date();
+  
+  switch (unit.toLowerCase()) {
+    case 'year': date.setFullYear(date.getFullYear() - num); break;
+    case 'month': date.setMonth(date.getMonth() - num); break;
+    case 'week': date.setDate(date.getDate() - num * 7); break;
+    case 'day': date.setDate(date.getDate() - num); break;
+    case 'hour': date.setHours(date.getHours() - num); break;
+    case 'minute': date.setMinutes(date.getMinutes() - num); break;
+  }
+  
+  return date.toISOString();
+}
+
 export async function searchLocations(query: string): Promise<{ results: SearchResult[]; source: "demo" | "live" }> {
   if (!query.trim()) {
     return { results: [], source: "demo" };
@@ -740,7 +762,7 @@ function adaptLiveProfile(
     .map((value: string) => Math.floor((scannedAt.getTime() - new Date(value).getTime()) / 86400000));
   const newestReviewDays = reviewAges.length ? Math.max(0, Math.min(...reviewAges)) : 999;
   const postAges = (entry.posts ?? [])
-    .map((post) => post.date ?? post.publishedAt)
+    .map((post) => convertRelativeDateToISO(post.updatesFromCustomers?.postDate))
     .filter(isDefined)
     .map((value: string) => Math.floor((scannedAt.getTime() - new Date(value).getTime()) / 86400000));
   const competitorIndex = competitors.findIndex(
@@ -777,7 +799,7 @@ function adaptLiveProfile(
           (post.text ?? post.content)
             ? {
               content: post.text ?? post.content ?? "",
-              publishedAt: post.date ?? post.publishedAt,
+              publishedAt: convertRelativeDateToISO(post.updatesFromCustomers?.postDate),
               url: post.url ?? post.postUrl ?? "https://business.google.com",
             }
             : null,
