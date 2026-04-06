@@ -112,6 +112,21 @@ type ApifyPost = {
   content?: string;
   url?: string;
   postUrl?: string;
+  updatesFromCustomers?: {
+    text?: string;
+    language?: string;
+    postDate?: string;
+    postedBy?: {
+      name?: string;
+      url?: string;
+      title?: string;
+      totalReviews?: number;
+    };
+    media?: Array<{
+      link?: string;
+      postDate?: string;
+    }>;
+  };
 };
 
 type ApifyPlaceEntry = {
