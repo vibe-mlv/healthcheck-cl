@@ -67,7 +67,7 @@ const ContactUsSection: React.FC = () => {
 
   return (
     <>
-      <section className='relative py-20 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 overflow-hidden'>
+      <section className='relative py-12 md:py-20 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 overflow-hidden'>
         {/* Floating Contact Bubbles */}
         <div className='contact-bubble'></div>
         <div className='contact-bubble'></div>
@@ -76,21 +76,21 @@ const ContactUsSection: React.FC = () => {
         <div className='contact-bubble'></div>
         <div className='contact-bubble'></div>
 
-        <div className='container mx-auto px-6 relative z-10'>
-          <div className='max-w-4xl mx-auto'>
+        <div className='container mx-auto px-4 md:px-6 relative z-10'>
+          <div className='max-w-5xl mx-auto'>
             {/* Header */}
             <div
-              className={`text-center mb-16 transition-all duration-1000 transform ${
+              className={`text-center mb-12 md:mb-16 transition-all duration-1000 transform ${
                 mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
             >
-              <h2 className='text-4xl md:text-5xl font-bold mb-6'>
+              <h2 className='text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6'>
                 <span className='bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent contact-pulse-text'>
                   Get in Touch
                 </span>
               </h2>
               <p
-                className={`text-lg text-gray-600 transition-all duration-1000 delay-300 transform ${
+                className={`text-base md:text-lg text-gray-600 transition-all duration-1000 delay-300 transform ${
                   mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}
               >
@@ -99,19 +99,19 @@ const ContactUsSection: React.FC = () => {
               </p>
             </div>
 
-            <div className='grid lg:grid-cols-2 gap-12 items-start'>
+            <div className='grid lg:grid-cols-2 gap-8 md:gap-12 items-start'>
               {/* Contact Form */}
               <div
                 className={`transition-all duration-1000 delay-500 transform ${
                   mounted ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
                 }`}
               >
-                <div className='bg-white/80 backdrop-blur-lg rounded-2xl p-8 shadow-xl border border-white/20'>
-                  <h3 className='text-2xl font-bold text-gray-800 mb-6 contact-bounce-gentle'>
+                <div className='bg-white/80 backdrop-blur-lg rounded-2xl p-6 md:p-8 shadow-xl border border-white/20'>
+                  <h3 className='text-xl md:text-2xl font-bold text-gray-800 mb-6 contact-bounce-gentle'>
                     Send us a Message
                   </h3>
 
-                  <form onSubmit={handleSubmit(onSubmit)} className='space-y-6'>
+                  <form onSubmit={handleSubmit(onSubmit)} className='space-y-5'>
                     {/* Name Field */}
                     <div>
                       <label
@@ -124,7 +124,7 @@ const ContactUsSection: React.FC = () => {
                         {...register('name', { required: 'Name is required' })}
                         type='text'
                         id='name'
-                        className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 ${
+                        className={`w-full px-4 py-2.5 text-sm border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 ${
                           errors.name ? 'border-red-500 bg-red-50' : 'border-gray-300'
                         }`}
                         placeholder='Your full name'
@@ -146,7 +146,7 @@ const ContactUsSection: React.FC = () => {
                         {...register('phone', { required: 'Phone number is required' })}
                         type='tel'
                         id='phone'
-                        className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 ${
+                        className={`w-full px-4 py-2.5 text-sm border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 ${
                           errors.phone ? 'border-red-500 bg-red-50' : 'border-gray-300'
                         }`}
                         placeholder='Your phone number'
@@ -174,7 +174,7 @@ const ContactUsSection: React.FC = () => {
                         })}
                         type='email'
                         id='email'
-                        className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 ${
+                        className={`w-full px-4 py-2.5 text-sm border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 ${
                           errors.email ? 'border-red-500 bg-red-50' : 'border-gray-300'
                         }`}
                         placeholder='your.email@example.com'
@@ -205,8 +205,8 @@ const ContactUsSection: React.FC = () => {
                           },
                         })}
                         id='message'
-                        rows={5}
-                        className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 resize-none ${
+                        rows={4}
+                        className={`w-full px-4 py-2.5 text-sm border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 resize-none ${
                           errors.message ? 'border-red-500 bg-red-50' : 'border-gray-300'
                         }`}
                         placeholder='Tell us about your business and how we can help...'
@@ -220,7 +220,7 @@ const ContactUsSection: React.FC = () => {
                     <button
                       type='submit'
                       disabled={isSubmitting}
-                      className='w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 px-6 rounded-lg font-semibold text-lg hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed relative overflow-hidden'
+                      className='w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 px-6 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed relative overflow-hidden'
                     >
                       <span
                         className={`${isSubmitting ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300`}
@@ -238,7 +238,7 @@ const ContactUsSection: React.FC = () => {
                     {/* Submit Message */}
                     {submitMessage && (
                       <div
-                        className={`p-4 rounded-lg text-center ${
+                        className={`p-4 rounded-lg text-center text-sm ${
                           submitMessage.includes('Thank you')
                             ? 'bg-green-100 text-green-800 border border-green-200'
                             : 'bg-red-100 text-red-800 border border-red-200'
@@ -257,51 +257,51 @@ const ContactUsSection: React.FC = () => {
                   mounted ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
                 }`}
               >
-                <div className='bg-white/80 backdrop-blur-lg rounded-2xl p-8 shadow-xl border border-white/20'>
-                  <h3 className='text-2xl font-bold text-gray-800 mb-6 contact-bounce-gentle'>
+                <div className='bg-white/80 backdrop-blur-lg rounded-2xl p-6 md:p-8 shadow-xl border border-white/20'>
+                  <h3 className='text-xl md:text-2xl font-bold text-gray-800 mb-6 contact-bounce-gentle'>
                     Let&apos;s Connect
                   </h3>
 
-                  <div className='space-y-6'>
-                    <div className='flex items-start space-x-4'>
-                      <div className='w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center contact-float'>
+                  <div className='space-y-5'>
+                    <div className='flex items-start gap-4'>
+                      <div className='w-12 h-12 flex-shrink-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center contact-float'>
                         <Mail className='w-6 h-6 text-white' />
                       </div>
                       <div>
                         <h4 className='font-semibold text-gray-800'>Email Us</h4>
-                        <p className='text-gray-600'>inquiry@maplovin.com</p>
-                        <p className='text-sm text-gray-500 mt-1'>
+                        <p className='text-gray-600 text-sm'>inquiry@maplovin.com</p>
+                        <p className='text-xs text-gray-500 mt-1'>
                           We&apos;ll respond within 24 hours
                         </p>
                       </div>
                     </div>
 
-                    <div className='flex items-start space-x-4'>
-                      <div className='w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center contact-bounce-gentle'>
+                    <div className='flex items-start gap-4'>
+                      <div className='w-12 h-12 flex-shrink-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center contact-bounce-gentle'>
                         <Phone className='w-6 h-6 text-white' />
                       </div>
                       <div>
                         <h4 className='font-semibold text-gray-800'>Call Us</h4>
-                        <p className='text-gray-600'>+84 33 606 1307</p>
+                        <p className='text-gray-600 text-sm'>+84 33 606 1307</p>
                       </div>
                     </div>
 
-                    <div className='flex items-start space-x-4'>
-                      <div className='w-12 h-12 bg-gradient-to-r from-pink-500 to-red-500 rounded-lg flex items-center justify-center contact-float'>
+                    <div className='flex items-start gap-4'>
+                      <div className='w-12 h-12 flex-shrink-0 bg-gradient-to-r from-pink-500 to-red-500 rounded-lg flex items-center justify-center contact-float'>
                         <MapPin className='w-6 h-6 text-white' />
                       </div>
                       <div>
                         <h4 className='font-semibold text-gray-800'>Address</h4>
-                        <p className='text-gray-600'>
+                        <p className='text-gray-600 text-sm'>
                           82 Pho Duc Chinh Ward 1, Binh Thanh District Ho Chi Minh City, Vietnam
                         </p>
                       </div>
                     </div>
                   </div>
 
-                  <div className='mt-8 pt-6 border-t border-gray-200'>
+                  <div className='mt-6 md:mt-8 pt-6 border-t border-gray-200'>
                     <h4 className='font-semibold text-gray-800 mb-4'>Follow Us</h4>
-                    <div className='flex space-x-4'>
+                    <div className='flex gap-3'>
                       <Link
                         href='https://www.facebook.com/maplovin'
                         target='_blank'
