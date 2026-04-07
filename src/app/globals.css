@@ -1463,13 +1463,15 @@ button {
   }
 
   .heroNav.left {
-    left: 50%;
-    transform: translateX(-44px);
+    left: 12px;
+    top: 12px;
+    transform: translateY(0);
   }
 
   .heroNav.right {
-    right: 50%;
-    transform: translateX(44px);
+    right: 12px;
+    top: 12px;
+    transform: translateY(0);
   }
 
   .selectionBody,
