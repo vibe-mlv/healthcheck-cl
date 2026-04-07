@@ -524,9 +524,14 @@ button {
   align-items: center;
   justify-content: center;
   border-radius: 999px;
-  color: #fff;
-  background: rgba(15, 30, 63, 0.44);
+  color: var(--ml-teal-base);
+  background: rgba(20, 212, 176, 0.1);
+  border: 1.5px solid var(--ml-teal-base);
   transform: translateY(-50%);
+}
+
+.heroNav:hover {
+  background: rgba(20, 212, 176, 0.15);
 }
 
 .heroNav.left {
