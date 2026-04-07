@@ -603,7 +603,7 @@ export function HealthDemoApp() {
                   alt={`${selected.name} photo ${activeSelectionPhoto + 1}`}
                   width={1200}
                   height={900}
-                  sizes="(max-width: 980px) 92vw, 58vw"
+                  sizes="100vw"
                   unoptimized
                 />
                 {images.length > 1 ? (
