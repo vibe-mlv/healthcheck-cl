@@ -1448,6 +1448,13 @@ button {
     grid-template-columns: 1fr;
   }
 
+  .scoreHeroBody,
+  .scoreHeroLeft,
+  .criterionRow,
+  .reportShell {
+    grid-template-columns: 1fr !important;
+  }
+
   .selectionBody,
   .scoreHero,
   .sectionCard,
