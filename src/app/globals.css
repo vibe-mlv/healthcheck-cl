@@ -372,6 +372,11 @@ button {
   gap: 16px;
 }
 
+.selectionActions .primaryButton {
+  width: 100%;
+  max-width: 320px;
+}
+
 .selectionCancel {
   margin-top: 0;
   min-height: auto;
