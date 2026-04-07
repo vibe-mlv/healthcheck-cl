@@ -1578,7 +1578,9 @@ button {
   }
 
   .scoreHeroDots {
+    display: flex;
     justify-content: center;
+    margin: 0 auto;
     gap: 6px;
   }
 
@@ -1586,7 +1588,7 @@ button {
     width: 8px;
     height: 8px;
   }
-
+}
   .heroCarouselFrame {
     min-height: 200px;
     padding: 12px;
