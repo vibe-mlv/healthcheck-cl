@@ -525,14 +525,13 @@ button {
   justify-content: center;
   border-radius: 999px;
   color: #fff;
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  background: transparent;
+  border: 1.5px solid #fff;
   transform: translateY(-50%);
 }
 
 .heroNav:hover {
-  background: #fff;
-  border-color: #fff;
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .heroNav.left {
