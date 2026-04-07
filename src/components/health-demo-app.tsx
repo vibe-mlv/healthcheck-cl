@@ -1079,8 +1079,8 @@ export function HealthDemoApp() {
                     <p>{action.reason}</p>
                   </div>
                   {action.href ? (
-                    <a href={action.href} target="_blank" rel="noreferrer">
-                      Open <LinkSimple size={14} weight="bold" />
+                    <a href={action.href} target="_blank" rel="noreferrer" className="actionCardNoBorder">
+                      Open <ArrowRight size={14} weight="bold" />
                     </a>
                   ) : null}
                 </div>
