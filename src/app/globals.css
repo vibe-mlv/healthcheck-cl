@@ -1493,15 +1493,21 @@ button {
   }
 
   .heroNav.left {
-    left: 12px;
+    left: 24px;
     top: 12px;
     transform: translateY(0);
   }
 
   .heroNav.right {
-    right: 12px;
+    right: 24px;
     top: 12px;
     transform: translateY(0);
+  }
+
+  .scoreHeroDots {
+    display: flex;
+    justify-content: center;
+    width: 100%;
   }
 
   .selectionBody,
