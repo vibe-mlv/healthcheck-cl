@@ -674,11 +674,11 @@ export function HealthDemoApp() {
               <p className="fieldHint">This helps us find the right competitors nearby.</p>
             </div>
             <div className="selectionActions">
-              <button className="outlineButton selectionCancel" onClick={reset}>
-                Cancel
-              </button>
               <button className="primaryButton" onClick={handleCheck}>
                 Check My Health <ArrowRight size={18} weight="bold" />
+              </button>
+              <button className="selectionCancel" onClick={reset}>
+                Cancel
               </button>
             </div>
           </div>
