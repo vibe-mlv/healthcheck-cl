@@ -296,7 +296,7 @@ function CompetitorMap({
           content: `<div style="padding:8px 10px;min-width:160px"><strong>${competitor.name}</strong><br/>${competitor.rating.toFixed(1)} stars \u00b7 ${competitor.reviewCount} reviews</div>`,
         });
 
-        marker.addListener("click", () => {
+        marker.addListener("gmp-click", () => {
           infoWindow.open({ anchor: marker, map });
         });
       });
