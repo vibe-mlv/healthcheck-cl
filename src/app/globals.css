@@ -978,7 +978,19 @@ button {
   gap: 12px;
 }
 
-.competitorActions a,
+.competitorActions a {
+  padding: 12px 14px;
+  border-radius: 14px;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.competitorActions a:hover {
+  background: #fff;
+  border-color: #fff;
+}
+
 .actionCard a {
   padding: 12px 14px;
   border-radius: 14px;
