@@ -2,7 +2,7 @@
   --ml-navy-light: #5078b8;
   --ml-navy-base: #1e3b7a;
   --ml-navy-dark: #0f1e3f;
-  --ml-teal-light: #f1ffd6;
+  --ml-teal-light: #5fefd6;
   --ml-teal-base: #14d4b0;
   --ml-teal-dark: #0c8f75;
   --ml-gray-light: #f1f3f7;
@@ -85,13 +85,6 @@ button {
   text-transform: uppercase;
 }
 
-.heroEyebrow {
-  margin-bottom: 16px;
-  padding: 8px 12px;
-  color: var(--ml-navy-base);
-  background: rgba(80, 120, 184, 0.14);
-}
-
 .hero h1,
 .selectionBody h2,
 .scoreHero h2,
@@ -103,8 +96,10 @@ button {
 .hero h1 {
   max-width: 12ch;
   color: var(--ml-navy-dark);
-  font-size: clamp(2.9rem, 7vw, 4.8rem);
-  line-height: 0.98;
+  font-size: clamp(3.2rem, 8vw, 5.2rem);
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 .hero p {
@@ -246,13 +241,16 @@ button {
 
 .selectionMedia {
   position: relative;
+  width: calc(100% + 48px);
+  margin: 0 -24px;
   background: linear-gradient(135deg, rgba(30, 59, 122, 0.14), rgba(20, 212, 176, 0.12));
 }
 
 .selectionHeroImage {
   position: relative;
+  width: 100%;
   min-height: 320px;
-  max-height: 420px;
+  max-height: 500px;
   aspect-ratio: 16 / 9;
   overflow: hidden;
 }
@@ -371,13 +369,33 @@ button {
 }
 
 .selectionActions {
-  display: grid;
-  gap: 12px;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.selectionActions .primaryButton {
+  width: 100%;
 }
 
 .selectionCancel {
   margin-top: 0;
+  min-height: auto;
+  padding: 4px 0;
+  font-size: 0.85rem;
+  background: transparent !important;
+  border: none !important;
+  color: var(--ml-gray-base) !important;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.selectionCancel:hover {
+  color: var(--ml-gray-dark) !important;
+  background: transparent !important;
+  border: none !important;
 }
 
 .primaryButton,
@@ -398,8 +416,13 @@ button {
 .primaryButton {
   min-height: 54px;
   padding: 0 18px;
-  color: #fff;
-  background: var(--ml-navy-base);
+  color: var(--ml-navy-dark);
+  background: var(--ml-teal-base);
+  border: none;
+}
+
+.primaryButton:hover {
+  background: var(--ml-teal-dark);
 }
 
 .primaryButton:hover,
@@ -491,7 +514,7 @@ button {
   position: relative;
   aspect-ratio: 4 / 3;
   min-height: 320px;
-  max-height: 420px;
+  max-height: 500px;
   overflow: hidden;
   border-radius: 24px;
   background: #eef2f7;
@@ -525,16 +548,21 @@ button {
   justify-content: center;
   border-radius: 999px;
   color: #fff;
-  background: rgba(15, 30, 63, 0.44);
+  background: transparent;
+  border: 1.5px solid #fff;
   transform: translateY(-50%);
 }
 
+.heroNav:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
 .heroNav.left {
-  left: 14px;
+  left: 40px;
 }
 
 .heroNav.right {
-  right: 14px;
+  right: 40px;
 }
 
 .heroCarouselControls {
@@ -560,6 +588,12 @@ button {
 
 .heroCarouselDots button.active {
   background: var(--ml-teal-base);
+}
+
+.scoreHeroDots {
+  display: flex;
+  justify-content: center;
+  gap: 7px;
 }
 
 .scoreGauge {
@@ -883,6 +917,8 @@ button {
 
 .competitorCard,
 .actionCard {
+  display: flex;
+  flex-direction: column;
   align-items: start;
   padding: 0;
   border: 0;
@@ -890,6 +926,11 @@ button {
   background: transparent;
   overflow: hidden;
   box-shadow: var(--shadow);
+}
+
+.actionCard {
+  justify-content: space-between;
+  padding: 16px 20px;
 }
 
 .competitorImageWrap {
@@ -972,26 +1013,102 @@ button {
   gap: 12px;
 }
 
-.competitorActions a,
-.actionCard a {
+.competitorActions a {
   padding: 12px 14px;
   border-radius: 14px;
+  color: #fff;
+  background: transparent;
+  border: 1.5px solid #fff;
+}
+
+.competitorActions a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #fff;
+}
+
+.actionCard a {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.9rem;
   color: var(--ml-navy-base);
-  background: rgba(255, 255, 255, 0.94);
+  background: rgba(30, 59, 122, 0.08);
+  border: 1px solid rgba(30, 59, 122, 0.15);
+}
+
+.actionCard a:hover {
+  background: rgba(30, 59, 122, 0.12);
+  border-color: rgba(30, 59, 122, 0.25);
+}
+
+.ghostButton {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  padding: 6px 0;
+  background: transparent;
+  border: none;
+  color: var(--ml-navy-base);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.ghostButton:hover {
+  color: var(--ml-navy-dark);
+}
+
+.actionCardNoBorder {
+  background: transparent !important;
+  border: none !important;
+  padding: 6px 0 !important;
+}
+
+.actionCardNoBorder:hover {
+  background: transparent !important;
+  border: none !important;
+  color: var(--ml-navy-dark) !important;
+}
+
+.competitorActions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
 }
 
 .competitorDots {
   display: flex;
   gap: 7px;
+  justify-content: center;
 }
 
 .outlineButton {
   margin-top: 18px;
+  min-height: 54px;
+  padding: 0 18px;
+  border: 1.5px solid var(--ml-teal-base);
+  color: var(--ml-teal-base);
+  background: rgba(20, 212, 176, 0.05);
+}
+
+.outlineButtonNavy {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  margin: 18px auto 0;
   min-height: 48px;
-  padding: 0 16px;
-  border: 1px solid rgba(30, 59, 122, 0.12);
+  padding: 0 24px;
+  border: 1.5px solid var(--ml-navy-base);
   color: var(--ml-navy-base);
-  background: #fff;
+  background: rgba(30, 59, 122, 0.05);
+  border-radius: 24px;
+}
+
+.outlineButtonNavy:hover {
+  background: rgba(30, 59, 122, 0.1);
 }
 
 .mapPanel {
@@ -1344,6 +1461,67 @@ button {
     grid-template-columns: 1fr;
   }
 
+  .sectionHeader {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+
+  .sectionHeader p {
+    max-width: 100% !important;
+  }
+
+  .scoreHeroTop {
+    flex-direction: column !important;
+    gap: 16px !important;
+  }
+
+  .scoreHeroTop > div {
+    width: 100% !important;
+  }
+
+  .scoreHeroTop .scanStamp {
+    position: static !important;
+  }
+
+  .scoreHeroBody,
+  .scoreHeroLeft,
+  .criterionRow,
+  .reportShell {
+    grid-template-columns: 1fr !important;
+  }
+
+  .heroNav {
+    width: 32px;
+    height: 32px;
+    top: 12px;
+    transform: translateY(0);
+  }
+
+  .heroNav.left {
+    left: 24px;
+    top: 20px;
+    transform: translateY(0);
+  }
+
+  .heroNav.right {
+    right: 24px;
+    top: 20px;
+    transform: translateY(0);
+  }
+
+  .scoreHeroDots {
+    display: flex !important;
+    justify-content: center !important;
+    width: 100% !important;
+    gap: 4px;
+  }
+
+  .scoreHeroDots button {
+    width: 6px !important;
+    height: 6px !important;
+  }
+
   .selectionBody,
   .scoreHero,
   .sectionCard,
@@ -1397,6 +1575,18 @@ button {
     aspect-ratio: 4 / 3;
     min-height: 200px;
     max-height: 280px;
+  }
+
+  .scoreHeroDots {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    gap: 6px;
+  }
+
+  .scoreHeroDots button {
+    width: 8px;
+    height: 8px;
   }
 
   .heroCarouselFrame {
