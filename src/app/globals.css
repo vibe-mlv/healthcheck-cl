@@ -590,6 +590,12 @@ button {
   background: var(--ml-teal-base);
 }
 
+.scoreHeroDots {
+  display: flex;
+  justify-content: center;
+  gap: 7px;
+}
+
 .scoreGauge {
   position: relative;
   width: 220px;
