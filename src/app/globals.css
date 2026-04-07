@@ -295,6 +295,10 @@ button {
   padding: 24px;
 }
 
+#actions {
+  margin-right: 120px;
+}
+
 .selectionBody {
   display: grid;
   gap: 20px;
