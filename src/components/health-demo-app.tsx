@@ -888,7 +888,7 @@ export function HealthDemoApp() {
                   <button className="themeToggle" onClick={() => setExpandedTheme((current) => current === theme.theme ? null : theme.theme)}>
                     <div>
                       <strong>
-                        {theme.theme} {sentimentEmoji(theme)}
+                        {theme.theme}
                       </strong>
                       <p>{theme.summary}</p>
                     </div>
