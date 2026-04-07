@@ -373,6 +373,14 @@ button {
 
 .selectionCancel {
   margin-top: 0;
+  color: var(--ml-gray-base) !important;
+  background: rgba(120, 124, 130, 0.08) !important;
+  border-color: rgba(120, 124, 130, 0.15) !important;
+}
+
+.selectionCancel:hover {
+  background: rgba(120, 124, 130, 0.12) !important;
+  border-color: rgba(120, 124, 130, 0.25) !important;
 }
 
 .primaryButton,
