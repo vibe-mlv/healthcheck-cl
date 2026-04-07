@@ -1018,12 +1018,17 @@ button {
 }
 
 .outlineButtonNavy {
-  margin-top: 18px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  margin: 18px auto 0;
   min-height: 48px;
-  padding: 0 16px;
+  padding: 0 24px;
   border: 1.5px solid var(--ml-navy-base);
   color: var(--ml-navy-base);
   background: rgba(30, 59, 122, 0.05);
+  border-radius: 24px;
 }
 
 .outlineButtonNavy:hover {
