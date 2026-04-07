@@ -524,14 +524,14 @@ button {
   align-items: center;
   justify-content: center;
   border-radius: 999px;
-  color: var(--ml-teal-base);
-  background: rgba(20, 212, 176, 0.1);
-  border: 1.5px solid var(--ml-teal-base);
+  color: var(--ml-navy-base);
+  background: rgba(30, 59, 122, 0.08);
+  border: 1.5px solid var(--ml-navy-base);
   transform: translateY(-50%);
 }
 
 .heroNav:hover {
-  background: rgba(20, 212, 176, 0.15);
+  background: rgba(30, 59, 122, 0.12);
 }
 
 .heroNav.left {
@@ -981,14 +981,14 @@ button {
 .actionCard a {
   padding: 12px 14px;
   border-radius: 14px;
-  color: var(--ml-teal-base);
-  background: rgba(20, 212, 176, 0.08);
-  border: 1px solid rgba(20, 212, 176, 0.15);
+  color: var(--ml-navy-base);
+  background: rgba(30, 59, 122, 0.08);
+  border: 1px solid rgba(30, 59, 122, 0.15);
 }
 
 .actionCard a:hover {
-  background: rgba(20, 212, 176, 0.12);
-  border-color: rgba(20, 212, 176, 0.25);
+  background: rgba(30, 59, 122, 0.12);
+  border-color: rgba(30, 59, 122, 0.25);
 }
 
 .competitorDots {
