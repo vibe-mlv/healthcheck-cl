@@ -241,6 +241,7 @@ button {
 
 .selectionMedia {
   position: relative;
+  width: 100%;
   background: linear-gradient(135deg, rgba(30, 59, 122, 0.14), rgba(20, 212, 176, 0.12));
 }
 
