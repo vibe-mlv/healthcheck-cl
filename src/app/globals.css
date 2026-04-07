@@ -908,6 +908,8 @@ button {
 
 .competitorCard,
 .actionCard {
+  display: flex;
+  flex-direction: column;
   align-items: start;
   padding: 0;
   border: 0;
@@ -915,6 +917,11 @@ button {
   background: transparent;
   overflow: hidden;
   box-shadow: var(--shadow);
+}
+
+.actionCard {
+  justify-content: space-between;
+  padding: 16px 20px;
 }
 
 .competitorImageWrap {
@@ -1045,6 +1052,7 @@ button {
 }
 
 .actionCardNoBorder {
+  margin-right: 24px;
   background: transparent !important;
   border: none !important;
   padding: 6px 0 !important;
