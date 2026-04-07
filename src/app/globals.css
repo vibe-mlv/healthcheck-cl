@@ -982,12 +982,12 @@ button {
   padding: 12px 14px;
   border-radius: 14px;
   color: #fff;
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  background: transparent;
+  border: 1.5px solid #fff;
 }
 
 .competitorActions a:hover {
-  background: #fff;
+  background: rgba(255, 255, 255, 0.1);
   border-color: #fff;
 }
 
