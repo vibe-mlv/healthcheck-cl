@@ -1060,7 +1060,7 @@ export function HealthDemoApp() {
                 );
               })}
             </div>
-            <button className="outlineButton" onClick={() => setShowMap((current) => !current)}>
+            <button className="outlineButtonNavy" onClick={() => setShowMap((current) => !current)}>
               {showMap ? "Hide Map" : "View on Map"} <MapPin size={16} weight="fill" />
             </button>
             <CompetitorMap report={report} visible={showMap} />
