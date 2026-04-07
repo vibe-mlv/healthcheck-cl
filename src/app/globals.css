@@ -1494,20 +1494,26 @@ button {
 
   .heroNav.left {
     left: 24px;
-    top: 12px;
+    top: 20px;
     transform: translateY(0);
   }
 
   .heroNav.right {
     right: 24px;
-    top: 12px;
+    top: 20px;
     transform: translateY(0);
   }
 
   .scoreHeroDots {
-    display: flex;
-    justify-content: center;
-    width: 100%;
+    display: flex !important;
+    justify-content: center !important;
+    width: 100% !important;
+    gap: 4px;
+  }
+
+  .scoreHeroDots button {
+    width: 6px !important;
+    height: 6px !important;
   }
 
   .selectionBody,
