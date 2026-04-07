@@ -1456,7 +1456,20 @@ button {
   }
 
   .heroNav {
-    display: none;
+    width: 32px;
+    height: 32px;
+    top: 12px;
+    transform: translateY(0);
+  }
+
+  .heroNav.left {
+    left: 50%;
+    transform: translateX(-44px);
+  }
+
+  .heroNav.right {
+    right: 50%;
+    transform: translateX(44px);
   }
 
   .selectionBody,
