@@ -1,11 +1,15 @@
 import { Suspense } from "react";
 
+import { Header } from "@/components/header";
 import { HealthDemoApp } from "@/components/health-demo-app";
 
 export default function Page() {
   return (
-    <Suspense>
-      <HealthDemoApp />
-    </Suspense>
+    <>
+      <Header />
+      <Suspense>
+        <HealthDemoApp />
+      </Suspense>
+    </>
   );
 }
