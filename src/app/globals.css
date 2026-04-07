@@ -1448,6 +1448,10 @@ button {
     grid-template-columns: 1fr;
   }
 
+  .sectionHeader p {
+    max-width: 100% !important;
+  }
+
   .scoreHeroTop {
     flex-direction: column !important;
     gap: 16px !important;
