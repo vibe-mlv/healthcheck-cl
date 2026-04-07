@@ -369,7 +369,7 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 6px;
 }
 
 .selectionActions .primaryButton {
@@ -380,8 +380,8 @@ button {
 .selectionCancel {
   margin-top: 0;
   min-height: auto;
-  padding: 8px 0;
-  font-size: 0.95rem;
+  padding: 4px 0;
+  font-size: 0.85rem;
   background: transparent !important;
   border: none !important;
   color: var(--ml-gray-base) !important;
