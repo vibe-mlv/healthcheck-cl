@@ -7,10 +7,10 @@ export function Header() {
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <Image
-              src="/maplovin-logo.svg"
+              src="/maplovin-logo.png"
               alt="MapLovin"
-              width={140}
-              height={48}
+              width={180}
+              height={56}
               priority
               className="h-auto w-auto"
             />
