@@ -296,7 +296,7 @@ function CompetitorMap({
           content: `<div style="padding:8px 10px;min-width:160px"><strong>${competitor.name}</strong><br/>${competitor.rating.toFixed(1)} stars \u00b7 ${competitor.reviewCount} reviews</div>`,
         });
 
-        marker.addListener("click", () => {
+        marker.addListener("gmp-click", () => {
           infoWindow.open({ anchor: marker, map });
         });
       });
@@ -539,7 +539,13 @@ export function HealthDemoApp() {
     <main className="pageShell">
       <section className="hero">
         <div className="heroCopy">
-          <div className="heroEyebrow">MapLovin Demo</div>
+          <Image
+            src="/maplovin-logo-clean.avif"
+            alt="MapLovin"
+            width={160}
+            height={50}
+            className="mb-4 h-auto w-auto"
+          />
           <h1>15-second Google Maps location health check</h1>
           <p>Scan location health, competitive pressure, and the next actions to prioritize.</p>
           <div className="heroChips">
@@ -597,7 +603,7 @@ export function HealthDemoApp() {
                   alt={`${selected.name} photo ${activeSelectionPhoto + 1}`}
                   width={1200}
                   height={900}
-                  sizes="(max-width: 980px) 92vw, 58vw"
+                  sizes="100vw"
                   unoptimized
                 />
                 {images.length > 1 ? (
@@ -668,11 +674,11 @@ export function HealthDemoApp() {
               <p className="fieldHint">This helps us find the right competitors nearby.</p>
             </div>
             <div className="selectionActions">
-              <button className="outlineButton selectionCancel" onClick={reset}>
-                Cancel
-              </button>
               <button className="primaryButton" onClick={handleCheck}>
                 Check My Health <ArrowRight size={18} weight="bold" />
+              </button>
+              <button className="selectionCancel" onClick={reset}>
+                Cancel
               </button>
             </div>
           </div>
@@ -882,7 +888,7 @@ export function HealthDemoApp() {
                   <button className="themeToggle" onClick={() => setExpandedTheme((current) => current === theme.theme ? null : theme.theme)}>
                     <div>
                       <strong>
-                        {theme.theme} {sentimentEmoji(theme)}
+                        {theme.theme}
                       </strong>
                       <p>{theme.summary}</p>
                     </div>
@@ -1054,7 +1060,7 @@ export function HealthDemoApp() {
                 );
               })}
             </div>
-            <button className="outlineButton" onClick={() => setShowMap((current) => !current)}>
+            <button className="outlineButtonNavy" onClick={() => setShowMap((current) => !current)}>
               {showMap ? "Hide Map" : "View on Map"} <MapPin size={16} weight="fill" />
             </button>
             <CompetitorMap report={report} visible={showMap} />
@@ -1073,8 +1079,8 @@ export function HealthDemoApp() {
                     <p>{action.reason}</p>
                   </div>
                   {action.href ? (
-                    <a href={action.href} target="_blank" rel="noreferrer">
-                      Open <LinkSimple size={14} weight="bold" />
+                    <a href={action.href} target="_blank" rel="noreferrer" className="actionCardNoBorder">
+                      Open <ArrowRight size={14} weight="bold" />
                     </a>
                   ) : null}
                 </div>

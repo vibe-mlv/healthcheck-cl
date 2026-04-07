@@ -69,7 +69,7 @@ const ContactUsSection: React.FC = () => {
       </div>
 
       {/* Two Column Layout */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '48px', alignItems: 'start' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '48px', alignItems: 'start' }}>
         {/* Contact Form */}
         <div className="sectionCard">
           <h2 style={{ fontSize: '1.4rem', color: 'var(--ml-navy-dark)', marginBottom: '24px', fontFamily: 'var(--font-crimson), serif', fontWeight: 600 }}>
