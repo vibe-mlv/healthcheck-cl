@@ -541,11 +541,11 @@ export function HealthDemoApp() {
         <div className="heroCopy">
           <div className="heroEyebrow flex items-center justify-center">
             <Image
-              src="/maplovin-logo-circle.avif"
+              src="/maplovin-logo-horizontal.png"
               alt="MapLovin"
-              width={24}
-              height={24}
-              className="h-6 w-6"
+              width={280}
+              height={88}
+              className="h-auto w-auto max-w-xs"
             />
           </div>
           <h1>15-second Google Maps location health check</h1>
