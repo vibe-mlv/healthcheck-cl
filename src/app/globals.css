@@ -1555,12 +1555,18 @@ button {
 
   .heroCarouselImage {
     aspect-ratio: 4 / 3;
-    min-height: 280px;
-    max-height: 380px;
+    min-height: 200px;
+    max-height: 280px;
   }
 
   .scoreHeroDots {
     justify-content: center;
+    gap: 6px;
+  }
+
+  .scoreHeroDots button {
+    width: 8px;
+    height: 8px;
   }
 
   .heroCarouselFrame {
