@@ -373,6 +373,8 @@ button {
 
 .selectionCancel {
   margin-top: 0;
+  min-height: 54px;
+  padding: 0 18px;
   color: var(--ml-gray-base) !important;
   background: rgba(120, 124, 130, 0.08) !important;
   border-color: rgba(120, 124, 130, 0.15) !important;
