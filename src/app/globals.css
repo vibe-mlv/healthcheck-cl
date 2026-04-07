@@ -991,8 +991,12 @@ button {
 }
 
 .actionCard a {
-  padding: 12px 14px;
-  border-radius: 14px;
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.9rem;
   color: var(--ml-navy-base);
   background: rgba(30, 59, 122, 0.08);
   border: 1px solid rgba(30, 59, 122, 0.15);
