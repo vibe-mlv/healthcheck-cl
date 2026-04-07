@@ -85,13 +85,6 @@ button {
   text-transform: uppercase;
 }
 
-.heroEyebrow {
-  margin-bottom: 16px;
-  padding: 8px 12px;
-  color: var(--ml-navy-base);
-  background: rgba(80, 120, 184, 0.14);
-}
-
 .hero h1,
 .selectionBody h2,
 .scoreHero h2,

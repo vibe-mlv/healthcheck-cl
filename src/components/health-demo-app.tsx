@@ -539,15 +539,13 @@ export function HealthDemoApp() {
     <main className="pageShell">
       <section className="hero">
         <div className="heroCopy">
-          <div className="heroEyebrow flex items-center justify-center">
-            <Image
-              src="/maplovin-logo-clean.avif"
-              alt="MapLovin"
-              width={160}
-              height={50}
-              className="h-auto w-auto"
-            />
-          </div>
+          <Image
+            src="/maplovin-logo-clean.avif"
+            alt="MapLovin"
+            width={160}
+            height={50}
+            className="mb-4 h-auto w-auto"
+          />
           <h1>15-second Google Maps location health check</h1>
           <p>Scan location health, competitive pressure, and the next actions to prioritize.</p>
           <div className="heroChips">
