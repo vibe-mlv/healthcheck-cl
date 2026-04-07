@@ -1448,6 +1448,19 @@ button {
     grid-template-columns: 1fr;
   }
 
+  .scoreHeroTop {
+    flex-direction: column !important;
+    gap: 16px !important;
+  }
+
+  .scoreHeroTop > div {
+    width: 100% !important;
+  }
+
+  .scoreHeroTop .scanStamp {
+    position: static !important;
+  }
+
   .scoreHeroBody,
   .scoreHeroLeft,
   .criterionRow,
