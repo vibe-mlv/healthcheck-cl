@@ -1027,6 +1027,23 @@ button {
   border-color: rgba(30, 59, 122, 0.25);
 }
 
+.ghostButton {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  padding: 6px 0;
+  background: transparent;
+  border: none;
+  color: var(--ml-navy-base);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.ghostButton:hover {
+  color: var(--ml-navy-dark);
+}
+
 .actionCardNoBorder {
   background: transparent !important;
   border: none !important;
