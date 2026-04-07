@@ -1455,6 +1455,10 @@ button {
     grid-template-columns: 1fr !important;
   }
 
+  .heroNav {
+    display: none;
+  }
+
   .selectionBody,
   .scoreHero,
   .sectionCard,
