@@ -1066,9 +1066,16 @@ button {
   color: var(--ml-navy-dark) !important;
 }
 
+.competitorActions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
 .competitorDots {
   display: flex;
   gap: 7px;
+  justify-content: center;
 }
 
 .outlineButton {
